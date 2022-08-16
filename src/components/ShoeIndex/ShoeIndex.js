@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components/macro';
 
-import { WEIGHTS } from '../../constants';
+import { QUERIES, WEIGHTS } from '../../constants';
 
 import Breadcrumbs from '../Breadcrumbs';
 import Select from '../Select';
@@ -35,22 +35,37 @@ const ShoeIndex = ({ sortId, setSortId }) => {
             Shoes
           </Breadcrumbs.Crumb>
         </Breadcrumbs>
-        <Spacer size={42} />
+        <ShoeSpacer size={42} />
         <ShoeSidebar />
       </LeftColumn>
     </Wrapper>
   );
 };
 
+const ShoeSpacer = styled(Spacer)`
+	@media ${QUERIES.tabletAndSmaller} {
+		display: none
+	}
+`;
+
 const Wrapper = styled.div`
   display: flex;
   flex-direction: row-reverse;
   align-items: baseline;
   gap: 32px;
+
+  @media ${QUERIES.tabletAndSmaller} {
+	flex-direction: column-reverse;
+	gap: 16px;
+  }
 `;
 
 const LeftColumn = styled.div`
   flex-basis: 248px;
+
+  @media ${QUERIES.tabletAndSmaller} {
+	flex: 1;
+  }
 `;
 
 const MainColumn = styled.div`
